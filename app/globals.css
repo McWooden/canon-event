@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-just-white: #F8FAFD;
+  --color-just-black: #18161A;
+  --color-just-brightblue: #3435F3;
+  --color-just-darkpurple: #300A44;
+  --color-just-orange: #FF7038;
+  --color-adsvate-blue: #2D35FF;
+  --color-adsvate-darkblue: #0209B2;
+  --color-adsvate-yellow: #FFD62D;
+  --color-online: #25D366;
+  --radius-btn: 40px;
+  --font-montserrat: var(--font-montserrat), sans-serif; 
+  --font-poppins: var(--font-poppins), sans-serif; 
 }
+/* Double save zone */
+                
+             
+/* Double save zone */ 
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), sans-serif;
+  } 
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply bg-[var(--color-just-white)] text-[var(--color-just-black)] overflow-x-hidden; 
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  
+  main {
+    @apply flex flex-col mx-4;
+  }
+  
+  /* first disana tetang adaptasi sama height navbar, jadi kita settingnya manual */
+  section {
+    @apply w-full max-w-5xl mx-auto mt-[100px] lg:mt-[150px] first:mt-21 first:md:mt-0;
+  }
+  
+  .btn {
+    @apply cursor-pointer px-5 py-4 w-fit shadow-[0_4px_4px_0_rgba(0,0,0,25%)] flex flex-row gap-2 items-center rounded-[var(--radius-btn)];
+  }
 }
