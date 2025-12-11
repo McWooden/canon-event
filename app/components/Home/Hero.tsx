@@ -32,11 +32,11 @@ export default function Page() {
     ];
 
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-4">
+        <section className="relative min-h-screen flex flex-col items-center justify-center">
             <div className="flex flex-col-reverse md:flex-row items-center gap-10 w-full max-w-6xl">
 
                 {/* TEXT */}
-                <div className="flex flex-col gap-5 max-w-xl">
+                <div className="relative flex flex-col gap-5 max-w-xl">
                     <h2 className="text-sm md:text-lg font-semibold text-just-darkpurple">
                         — Setiap ide punya potensi besar
                     </h2>
@@ -53,6 +53,11 @@ export default function Page() {
                     <div className="btn w-full md:w-fit bg-just-brightblue text-just-white text-base md:text-base px-6 py-4 flex items-center gap-2">
                         <MyIcon path="/icons/play_arrow_filled.svg" />
                         <span>Mulai Sekarang</span>
+                    </div>
+
+                    <div className="flex gap-2.5 absolute -bottom-1/5 md:-bottom-1/4 left-0">
+                        <div className="bg-just-orange w-[25px] h-[25px] rounded-full shadow"></div>
+                        <div className="bg-just-darkpurple w-[58px] h-[25px] rounded-full shadow"></div>
                     </div>
                 </div>
 
@@ -74,6 +79,9 @@ export default function Page() {
                         />
                     ))}
                 </div>
+            </div>
+            <div className="overflow-hidden w-full opacity-5 absolute -top-1/2 -left-1/3">
+                <div className="w-[700px] h-[700px] shadow-[4px_4px_4px_5px_#000000] rounded-full"></div>
             </div>
         </section>
     );

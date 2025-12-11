@@ -28,11 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} ${poppins.variable} ${poppins.className} antialiased`}>
-        <div className="relative overflow-hidden">
-          <div className="w-[700px] h-[700px] shadow-[4px_4px_4px_5px_#000000] opacity-5 absolute -top-[35%] -left-[27%] rounded-full"></div>
-          <Navbar />
-          {children}
-        </div>
+        <Navbar />
+        {children}
       </body>
     </html>
   );

@@ -30,7 +30,9 @@ export default function Navbar() {
                 className={
                     `fixed top-0 left-0 right-0 px-8 py-6 flex justify-between items-center font-montserrat z-50
                 transition-all duration-300 shadow-lg
-                ${isScrolled ? 'bg-just-white' : 'bg-transparent shadow-transparent'}`
+                ${isScrolled ? 'bg-just-white' : 'bg-transparent shadow-transparent'}
+                ${isOpen && '-translate-y-full'}
+                `
                 }
             >
                 {/* LOGO - Visible on all screens */}
@@ -93,9 +95,9 @@ export default function Navbar() {
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {/* Simple CSS Hamburger lines */}
-                    <span className={`block w-full h-[3px] shadow-md bg-adsvate-blue transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`block w-full h-[3px] shadow-md bg-adsvate-darkblue transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`block w-full h-[3px] shadow-md bg-adsvate-yellow transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
+                    <span className="block w-full h-[3px] shadow-md bg-just-darkpurple transition-all duration-300"></span>
+                    <span className="block w-full h-[3px] shadow-md bg-just-darkpurple transition-all duration-300"></span>
+                    <span className="block w-full h-[3px] shadow-md bg-just-darkpurple transition-all duration-300"></span>
                 </button>
             </nav>
 

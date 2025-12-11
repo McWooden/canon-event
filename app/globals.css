@@ -15,7 +15,7 @@
   --font-poppins: var(--font-poppins), sans-serif; 
 }
 /* Double save zone */
-                
+                   
              
 /* Double save zone */ 
 @layer base {
@@ -28,15 +28,15 @@
   }
   
   main {
-    @apply flex flex-col mx-4;
+    @apply flex flex-col;
   }
   
   /* first disana tetang adaptasi sama height navbar, jadi kita settingnya manual */
   section {
-    @apply w-full max-w-5xl mx-auto mt-[100px] lg:mt-[150px] first:mt-21 first:md:mt-0;
+    @apply w-full max-w-5xl mx-auto mt-[100px] lg:mt-[150px] first:mt-21 first:md:mt-0 px-4;
   }
   
   .btn {
-    @apply cursor-pointer px-5 py-4 w-fit shadow-[0_4px_4px_0_rgba(0,0,0,25%)] flex flex-row gap-2 items-center rounded-[var(--radius-btn)];
+    @apply cursor-pointer px-5 py-4 w-fit shadow-[0_4px_4px_0_rgba(0,0,0,25%)] flex flex-row gap-2 items-center rounded-[var(--radius-btn)] font-montserrat font-semibold;
   }
 }
