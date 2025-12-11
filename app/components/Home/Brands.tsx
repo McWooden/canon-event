@@ -10,15 +10,22 @@ export default function Brands() {
 
     return (
         <section className="flex flex-col gap-4 max-w-full overflow-visible px-0">
-            <div className='relative font-montserrat md:text-center w-fit md:mx-auto px-4 overflow-visible'>
-                <div className='flex flex-col font-semibold'>
-                    <h2 className='text-2xl lg:text-4xl'>Brand Yang</h2>
-                    <h2 className='text-2xl lg:text-4xl'><span className='text-just-orange'>Kolaborasi</span> Sama Kami</h2>
+            <div className='relative font-montserrat md:text-center w-fit md:mx-auto overflow-visible'>
+                <div className='flex flex-col px-4'>
+                    <div className='relative flex flex-col font-semibold'>
+                        <h2 className='text-2xl lg:text-4xl leading-none'>Brand Yang</h2>
+                        <h2 className='text-2xl lg:text-4xl'><span className='text-just-orange'>Kolaborasi</span> Sama Kami</h2>
+                        <div className='absolute md:hidden flex -top-2 right-0'>
+                            <Image src={'/assets/sunglasses.webp'} alt='sunglasses' width={32} height={32} className='-translate-x-3'/>
+                            <Image src={'/assets/shock.webp'} alt='shock' width={32} height={32} className='-translate-y-1'/>
+                            <Image src={'/assets/confetti.webp'} alt='confetti' width={32} height={32} className='translate-y-3'/>
+                        </div>
+                    </div>
+                    <p className='italic text-xs lg:text-xl'>Kira kira ada yang kamu kenal ngga nih?</p>
                 </div>
-                <p className='italic text-xs lg:text-xl'>Kira kira ada yang kamu kenal ngga nih?</p>
-                {/* <Image src={'/assets/sunglasses.webp'} alt='sunglasses' width={87} height={83} className='absolute -left-[23%] top-0'/>
-                <Image src={'/assets/shock.webp'} alt='shock' width={55} height={49} className='absolute -right-[15%] top-0'/>
-                <Image src={'/assets/confetti.webp'} alt='confetti' width={90} height={75} className='absolute -right-[30%] bottom-0'/> */}
+                <Image src={'/assets/sunglasses.webp'} alt='sunglasses' width={87} height={83} className='absolute hidden md:flex md:-left-[23%] top-0'/>
+                <Image src={'/assets/shock.webp'} alt='shock' width={55} height={49} className='absolute hidden md:flex md:-right-[15%] top-0'/>
+                <Image src={'/assets/confetti.webp'} alt='confetti' width={90} height={75} className='absolute hidden md:flex md:-right-[37%] top-0 md:bottom-0'/>
             </div>
             
             <div className="relative w-full py-4 md:py-6 lg:py-8 max-w-[1042px] mx-auto">
