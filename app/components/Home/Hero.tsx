@@ -32,7 +32,7 @@ export default function Page() {
     ];
 
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center">
+        <section className="relative md:min-h-screen flex flex-col items-center justify-center">
             <div className="flex flex-col-reverse md:flex-row items-center gap-10 w-full max-w-6xl">
 
                 {/* TEXT */}

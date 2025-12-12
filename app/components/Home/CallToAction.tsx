@@ -21,6 +21,7 @@ export default function CallToAction() {
                 <p className="text-sm lg:text-xl">Siapa tau brand kamu next viral<br/>yang ROI-nya gila-gilaan</p>
 
                 <div className="flex flex-col md:flex-row gap-4 shrink-0 text-sm">
+                    <Link href="#" className="btn justify-center bg-just-darkpurple text-just-white w-full md:w-fit">Lihat harga</Link>
                     <Link href="#" className="btn justify-center bg-just-white w-full md:w-fit">Konsultasi Gratis Sekarang</Link>
                 </div>
             </div>
