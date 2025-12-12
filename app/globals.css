@@ -6,6 +6,7 @@
   --color-just-brightblue: #3435F3;
   --color-just-darkpurple: #300A44;
   --color-just-orange: #FF7038;
+  --color-just-gray: #636F73;
   --color-adsvate-blue: #2D35FF;
   --color-adsvate-darkblue: #0209B2;
   --color-adsvate-yellow: #FFD62D;
@@ -15,7 +16,7 @@
   --font-poppins: var(--font-poppins), sans-serif; 
 }
 /* Double save zone */
-                   
+                     
              
 /* Double save zone */ 
 @layer base {
@@ -32,7 +33,7 @@
   }
   
   /* first disana tetang adaptasi sama height navbar, jadi kita settingnya manual */
-  section {
+  section, footer {
     @apply w-full max-w-5xl mx-auto mt-[100px] lg:mt-[150px] first:mt-21 first:md:mt-0 px-4;
   }
   

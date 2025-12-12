@@ -2,9 +2,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import navlist from "../database/navlist"
 
 export default function Navbar() {
-    const navlist = ['partner', 'workflow', 'harga', 'FAQ']
     const langList = ['en', 'id']
 
     const [isScrolled, setIsScrolled] = useState(false)
@@ -38,7 +38,7 @@ export default function Navbar() {
                 {/* LOGO - Visible on all screens */}
                 <div className="relative w-20 h-[34px] md:w-[100px] md:h-[42px] lg:w-[121px] lg:h-[52px]">
                     <Image 
-                        src={'/assets/adsvate-logo.webp'} 
+                        src={'/assets/adsvate.webp'} 
                         alt="logo" 
                         fill 
                         style={{ objectFit: 'contain' }} // Pastikan gambar terlihat penuh di dalam wadah
@@ -112,7 +112,7 @@ export default function Navbar() {
             <div className={`fixed top-0 left-0 w-[75%] max-w-[300px] h-full bg-just-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="flex flex-col p-8 gap-8 h-full overflow-y-auto">
                     {/* Logo in Drawer */}
-                    <Image src={'/assets/adsvate-logo.webp'} alt="logo" width={100} height={42} />
+                    <Image src={'/assets/adsvate.webp'} alt="logo" width={100} height={42} />
 
                     {/* Mobile Links */}
                     <div className="flex flex-col gap-6">

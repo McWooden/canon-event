@@ -1,0 +1,1 @@
+export default ['partner', 'workflow', 'harga', 'FAQ']
