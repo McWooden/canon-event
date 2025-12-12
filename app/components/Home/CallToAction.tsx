@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export default function CallToAction() {
     return <section>
-        <div className="relative flex flex-col md:flex-row bg-linear-to-r from-[#FF941C] to-[#FFD400] rounded-4xl justify-center items-center">
+        <div className="relative flex flex-col md:flex-row bg-linear-to-r from-[#FF941C] to-[#FFD400] rounded-4xl justify-center items-center md:items-end overflow-x-hidden">
 
             <div className="relative w-full aspect-463/326 md:w-1/2 lg:w-[463px] mask-b-from-50% md:mask-none mt-4">
                 <Image
@@ -20,7 +20,7 @@ export default function CallToAction() {
                 <h2 className="font-bold text-2xl lg:text-3xl max-w-[269px]">Coba Adsvate&nbsp;sekarang</h2>
                 <p className="text-sm lg:text-xl">Siapa tau brand kamu next viral<br/>yang ROI-nya gila-gilaan</p>
 
-                <div className="flex flex-col md:flex-row gap-4 shrink-0 text-sm">
+                <div className="flex flex-col lg:flex-row gap-4 shrink-0 text-sm">
                     <Link href="#" className="btn justify-center bg-just-darkpurple text-just-white w-full md:w-fit">Lihat harga</Link>
                     <Link href="#" className="btn justify-center bg-just-white w-full md:w-fit">Konsultasi Gratis Sekarang</Link>
                 </div>

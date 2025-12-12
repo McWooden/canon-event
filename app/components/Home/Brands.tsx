@@ -28,7 +28,7 @@ export default function Brands() {
             </div>
             
             <div className="relative w-full py-4 md:py-6 lg:py-8 max-w-[1042px] mx-auto">
-                <div className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth gap-4 md:gap-4 lg:gap-4 pb-2 md:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as any}>
+                <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:gap-4 lg:gap-4 pb-2 md:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as any}>
                     {brandCols.map((brandCol, colIndex) => (
                         <div key={colIndex} className="w-[248px] shrink-0 snap-center flex flex-col gap-4 h-full first:ml-4 last:mr-4">
                             {brandCol.map((brand, index) => (
