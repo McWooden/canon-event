@@ -4,6 +4,7 @@
   --color-just-white: #F8FAFD;
   --color-just-black: #18161A;
   --color-just-brightblue: #3435F3;
+  --color-just-purple: #4716ED;
   --color-just-darkpurple: #300A44;
   --color-just-orange: #FF7038;
   --color-just-gray: #636F73;
@@ -17,7 +18,7 @@
 }
 /* Double save zone */
                      
-             
+              
 /* Double save zone */ 
 @layer base {
   h1, h2, h3, h4, h5, h6 {

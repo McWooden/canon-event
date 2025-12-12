@@ -1,11 +1,11 @@
 interface IBrands {
-        nickname: string, 
-        from: 'Instagram' | 'Tiktok' | 'Shopee' | 'Shopee Instagram' | 'Shopee Lazada', 
-        name: string, 
-        description: string, 
-        comment?: string,
-        doHavePath?: Boolean
-    }
+    nickname: string, 
+    from: 'Instagram' | 'Tiktok' | 'Shopee' | 'Shopee Instagram' | 'Shopee Lazada', 
+    name: string, 
+    description: string, 
+    comment?: string,
+    doHavePath?: Boolean
+}
 
 const brands: IBrands[] = [
     {
