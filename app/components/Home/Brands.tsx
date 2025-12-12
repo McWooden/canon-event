@@ -9,7 +9,7 @@ export default function Brands() {
     const scrollRef = useRef<HTMLDivElement>(null)
 
     return (
-        <section className="flex flex-col gap-4 max-w-full overflow-visible px-0">
+        <section className="flex flex-col gap-4 max-w-full overflow-visible px-0 md:mt-0">
             <div className='relative font-montserrat md:text-center w-fit md:mx-auto overflow-visible'>
                 <div className='flex flex-col px-4'>
                     <div className='relative flex flex-col font-semibold'>

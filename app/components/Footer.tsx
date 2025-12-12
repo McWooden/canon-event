@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import navlist from '../database/navlist'
 import Link from 'next/link'
@@ -21,7 +23,7 @@ export default function Footer() {
                 <div className='flex flex-col gap-4'>
                     <span>Navigasi</span>
                     <div className='flex flex-col gap-3'>
-                        {navlist.map((link, i) => <Link key={i} href={`#${link}`} className='text-just-gray'>{link}</Link>)}
+                        {navlist.map((link, i) => <Link key={i} href={`#${link}`} className='text-just-gray capitalize'>{link}</Link>)}
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>
