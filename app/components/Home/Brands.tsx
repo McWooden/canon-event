@@ -5,10 +5,10 @@ import { chunkArray } from '@/app/utils/utils'
 import Image from 'next/image'
 
 export default function Brands() {
-    const brandCols = chunkArray(brands, 3) // 4 arrays, masing-masing 3 brands vertikal
+    const brandCols = chunkArray(brands, 3)
 
     return (
-        <section className="flex flex-col gap-4 max-w-full overflow-visible px-0 md:mt-0">
+        <section id='brand' className="flex flex-col gap-4 max-w-full overflow-visible px-0 md:mt-0">
             <div className='relative font-montserrat md:text-center w-fit md:mx-auto overflow-visible'>
                 <div className='flex flex-col px-4'>
                     <div className='relative flex flex-col font-semibold'>
@@ -28,7 +28,7 @@ export default function Brands() {
             </div>
             
             <div className="relative w-full py-4 md:py-6 lg:py-8 max-w-[1042px] mx-auto">
-                <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:gap-4 lg:gap-4 pb-2 md:pb-0" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as any}>
+                <div className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 md:gap-4 lg:gap-4 pb-2 md:pb-0 mask-r-from-90% mask-l-from-90% mask-l-from-just-white mask-r-from-just-white lg:mask-none" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' } as any}>
                     {brandCols.map((brandCol, colIndex) => (
                         <div key={colIndex} className="w-[248px] shrink-0 snap-center flex flex-col gap-4 h-full first:ml-4 last:mr-4">
                             {brandCol.map((brand, index) => (
@@ -58,7 +58,7 @@ export default function Brands() {
             
             <div className='relative px-4 w-fit mx-auto flex gap-2 items-center'>
                 <Image src={'/assets/cocky.webp'} alt='cocky' width={40} height={40}/>
-                <p className='w-fit italic text-xs lg:text-xl'>Nah, Brandmu mau jadi partner kami ke-berapa nih?</p>
+                <p className='w-fit italic text-xs lg:text-xl'>Nah, brand punyamu mau nambah relasi juga ngga nih?</p>
             </div>
         </section>
     )

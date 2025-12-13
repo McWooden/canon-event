@@ -11,12 +11,12 @@ export default function Artikel() {
   return <section className="flex flex-col gap-8 px-0">
     <div className="flex flex-col gap-8 px-4">
       <h2 className="font-semibold text-2xl lg:text-4xl leading-[150%]">
-        <span className="text-just-orange">Cerita</span> <br/> Perjalana Kami
+        <span className="text-just-orange">Cerita</span> <br/> Perjalanan Kami
       </h2>
     </div>
 
     {/* container scroll hanya aktif di mobile, non-aktif di lg */}
-    <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth lg:overflow-visible lg:snap-none lg:flex-row lg:flex-nowrap lg:justify-start">
+    <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth lg:overflow-visible lg:snap-none lg:flex-row lg:flex-nowrap lg:justify-start mask-r-from-90% mask-l-from-90% mask-l-from-just-white mask-r-from-just-purple lg:mask-none">
       {articles.map((article, key) => (
         <div
           key={key}

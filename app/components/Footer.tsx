@@ -23,7 +23,7 @@ export default function Footer() {
                 <div className='flex flex-col gap-4'>
                     <span>Navigasi</span>
                     <div className='flex flex-col gap-3'>
-                        {navlist.map((link, i) => <Link key={i} href={`#${link}`} className='text-just-gray capitalize'>{link}</Link>)}
+                        {navlist.map((link, i) => <Link key={i} href={`/${link.path}`} className='text-just-gray capitalize'>{link.name}</Link>)}
                     </div>
                 </div>
                 <div className='flex flex-col gap-4'>

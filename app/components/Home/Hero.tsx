@@ -1,3 +1,6 @@
+"use client"
+import { useState, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 import Image from "next/image"
 import MyIcon from "@/app/components/utils/MyIcon";
@@ -6,6 +9,40 @@ import cn from "@/app/utils/cn";
 import FlyingCloud from "@/app/components/motion/FlyingCloud";
 
 export default function Page() {
+    const [openReels, setOpenReels] = useState(false)
+
+    const videoRef = useRef<HTMLVideoElement | null>(null)
+    const [muted, setMuted] = useState(false)
+
+    const toggleMute = () => {
+        if (!videoRef.current) return
+        videoRef.current.muted = !muted
+        setMuted(!muted)
+    }
+
+    const mobileSlideUp = {
+        initial: { 
+            y: "100%", // Mulai dari luar layar (bawah)
+            opacity: 1 
+        },
+        animate: { 
+            y: 0, 
+            opacity: 1, 
+            transition: { 
+                type: "spring" as const, 
+                stiffness: 300, 
+                damping: 30 
+            } 
+        },
+        exit: { 
+            y: "100%", 
+            opacity: 1, 
+            transition: { duration: 0.3 } 
+        }
+    }
+    
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     const heroImageAttributes = [
         {
             iconPath: "/icons/thumb.webp",
@@ -19,7 +56,7 @@ export default function Page() {
             number: 2,
             title: " Miliar",
             subtitle: "Total profit/tahun",
-            className: "right-15 -bottom-[5%] translate-x-1/4",
+            className: "right-15 -bottom-[10%] translate-x-1/4",
             decimalNumber: 7
         },
         {
@@ -50,9 +87,9 @@ export default function Page() {
                         kami bantu brand kamu tumbuh cepat di dunia digital.
                     </p>
 
-                    <div className="btn w-full md:w-fit bg-just-brightblue text-just-white text-base md:text-base px-6 py-4 flex items-center gap-2">
+                    <div onClick={() => setOpenReels(true)} className="btn w-full md:w-fit bg-just-brightblue text-just-white text-base md:text-base px-6 py-4 flex items-center gap-2">
                         <MyIcon path="/icons/play_arrow_filled.svg" />
-                        <span>Mulai Sekarang</span>
+                        <span>Lihat Feed</span>
                     </div>
 
                     <div className="flex gap-2.5 absolute -bottom-1/5 md:-bottom-1/4 left-0">
@@ -83,13 +120,102 @@ export default function Page() {
             <div className="overflow-hidden w-full opacity-5 absolute -top-1/2 -left-1/3">
                 <div className="w-[700px] h-[700px] shadow-[4px_4px_4px_5px_#000000] rounded-full"></div>
             </div>
+
+            {/* MODAL REELS DENGAN ANIMATEPRESENCE */}
+            <AnimatePresence>
+                {openReels && (
+                    <div
+                        onClick={() => setOpenReels(false)}
+                        // items-end di mobile untuk slide-up dari bawah
+                        className="fixed inset-0 z-50 bg-black/50 flex items-end md:items-center justify-center"
+                    >
+                        <motion.div
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-just-white w-full md:w-[900px] h-[85vh] md:h-[500px] overflow-hidden flex flex-col md:flex-row p-8"
+                            
+                            // Menerapkan Varian Bersyarat
+                            initial={isMobile ? "initial" : "initialDesktop"}
+                            animate={isMobile ? "animate" : "animateDesktop"}
+                            exit={isMobile ? "exit" : "exitDesktop"}
+                            
+                            variants={{
+                                // Desktop Default (Fade/Scale In & Out)
+                                initialDesktop: { opacity: 0, scale: 0.95 },
+                                animateDesktop: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: "easeOut" } },
+                                exitDesktop: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
+                                
+                                // Mobile Slide Up
+                                initial: mobileSlideUp.initial,
+                                animate: mobileSlideUp.animate,
+                                exit: mobileSlideUp.exit
+                            }}
+                        >
+                            {/* VIDEO WRAPPER */}
+                            <div
+                                onClick={toggleMute}
+                                className="relative w-full md:w-1/2 h-full rounded-2xl overflow-hidden"
+                            >
+                                <video
+                                ref={videoRef}
+                                src="/assets/reels/lihat-feed.mp4"
+                                autoPlay
+                                loop
+                                playsInline
+                                controls={false}
+                                className="w-full h-full object-cover"
+                                />
+
+                                {/* CAPTION MOBILE (NIMPA VIDEO) */}
+                                <div className="pointer-events-none md:hidden absolute bottom-0 left-0 w-full p-4 text-white bg-linear-to-t from-black/80 to-transparent">
+                                <p className="text-sm">
+                                    Kamu butuh marketing yang gak asal ngiklan. Adsvate bisa bantu dari Ads sampai manajemen KOL untuk bikin brand kamu lebih growth.
+                                </p>
+                                <p className="text-sm mt-1">
+                                    Mau coba konsultasi dulu? Free coba hubungi Minsvate via DM Instagram ya👋🏻🤩
+                                </p>
+                                <p className="text-xs opacity-70 mt-2">
+                                    #DigitalMarketing #Adsvate #MarketingAgency
+                                </p>
+                                </div>
+                            </div>
+
+                            {/* DESKTOP TEXT */}
+                            <div className="hidden md:flex p-6 flex-col gap-3 text-base bg-white">
+                                <p>
+                                Kamu butuh marketing yang gak asal ngiklan. Adsvate bisa bantu dari Ads sampai manajemen KOL untuk bikin brand kamu lebih growth.
+                                </p>
+                                <p>
+                                Mau coba konsultasi dulu? Free coba hubungi Minsvate via DM Instagram ya👋🏻🤩
+                                </p>
+                                <p className="text-blue-700">
+                                #DigitalMarketing #Adsvate #MarketingAgency
+                                </p>
+                            </div>
+                            
+                            {/* MOBILE BUTTON (Hanya Muncul di Mobile) */}
+                            {/* Tombol ini akan otomatis muncul dari bawah karena modalnya slide-up dari bawah */}
+                            <div className="md:hidden w-full mt-4">
+                                <div 
+                                    onClick={() => setOpenReels(false)} 
+                                    className="btn w-full bg-just-brightblue text-just-white text-base px-6 py-4 flex items-center justify-center gap-2"
+                                >
+                                    <span>Tutup</span>
+                                </div>
+                            </div>
+
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+            
+
         </section>
     );
 }
 
 function HeroImageCountingTooltip({ className, iconPath, number, title, subtitle, decimalNumber }: { className: string, iconPath: string, number: number, title: string, subtitle: string, decimalNumber?: number | null }) {
     return (
-        <FlyingCloud className={cn("absolute bg-just-black/90 text-just-white p-2 px-3 rounded-lg", className, 'scale-50 md:scale-75 lg:scale-100')}>
+        <FlyingCloud className={cn("absolute bg-just-black/90 text-just-white p-2 px-3 rounded-lg", className, 'scale-60 md:scale-75 lg:scale-100')}>
             <div className="flex gap-4 shrink-0">
                 <div className="relative w-full max-w-[46px] h-auto">
                     <MyIcon path={iconPath} width={46} height={46} />

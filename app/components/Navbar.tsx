@@ -51,9 +51,9 @@ export default function Navbar() {
                         <Link
                             key={key}
                             className="font-semibold text-[16px] capitalize"
-                            href={`#${item}`}
+                            href={`${item.path}`}
                         >
-                            {item}
+                            {item.name}
                         </Link>
                     )}
                 </div>
@@ -119,11 +119,12 @@ export default function Navbar() {
                         {navlist.map((item, key) =>
                             <Link
                                 key={key}
-                                className="font-semibold text-xl capitalize border-b border-just-black/25 pb-2"
-                                href={`#${item}`}
+                                className="flex flex-col font-semibold text-xl capitalize pb-2"
+                                href={`/${item.path}`}
                                 onClick={() => setIsOpen(false)} // Close menu when clicked
                             >
-                                {item}
+                                <span>{item.name}</span>
+                                <span className="text-xs text-just-gray font-normal flex gap-2">{item.detail}</span>
                             </Link>
                         )}
                     </div>
