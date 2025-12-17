@@ -4,16 +4,7 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useEffect } from 'react';
 
-/**
- * @typedef {object} AnimatedCounterProps
- * @property {number} finalNumber - The number to count up to.
- */
-
-/**
- * Animated number counter component.
- * @param {AnimatedCounterProps} props
- */
-function AnimatedCounter({ finalNumber }) {
+function AnimatedCounter({ finalNumber, duration = 2 }) {
   // 1. Create a motion value to track the number being animated.
   const count = useMotionValue(0); 
 
@@ -23,12 +14,12 @@ function AnimatedCounter({ finalNumber }) {
   // 3. Start the animation when the component mounts or finalNumber changes.
   useEffect(() => {
     const controls = animate(count, finalNumber, {
-      duration: 2, 
+      duration: duration, 
       ease: "easeOut",
     });
 
     return controls.stop; 
-  }, [finalNumber]);
+  }, [finalNumber, duration]);
 
   return (
     <motion.span>

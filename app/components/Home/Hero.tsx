@@ -2,6 +2,8 @@
 import { useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
+const simpleText = "Platform all-in-one untuk membuat, mengelola, dan mengoptimalkan kampanye iklan digital kamu dengan mudah."
+
 import Image from "next/image"
 import MyIcon from "@/app/components/utils/MyIcon";
 import AnimatedCounter from "@/app/components/motion/AnimatedCounter";
@@ -83,16 +85,15 @@ export default function Page() {
                     </h1>
 
                     <p className="text-sm md:text-base lg:text-xl">
-                        Dari strategi iklan, desain visual, sampai social media management —
-                        kami bantu brand kamu tumbuh cepat di dunia digital.
+                        Dari strategi iklan, desain visual, sampai social media management — kami bantu brand kamu tumbuh cepat di dunia digital
                     </p>
 
                     <div onClick={() => setOpenReels(true)} className="btn w-full md:w-fit bg-just-brightblue text-just-white text-base md:text-base px-6 py-4 flex items-center gap-2">
                         <MyIcon path="/icons/play_arrow_filled.svg" />
-                        <span>Lihat Feed</span>
+                        <span>Lihat Feed Minsvate</span>
                     </div>
 
-                    <div className="flex gap-2.5 absolute -bottom-1/5 md:-bottom-1/4 left-0">
+                    <div className="hidden md:flex gap-2.5 absolute -bottom-1/5 md:-bottom-1/4 left-0">
                         <div className="bg-just-orange w-[25px] h-[25px] rounded-full shadow"></div>
                         <div className="bg-just-darkpurple w-[58px] h-[25px] rounded-full shadow"></div>
                     </div>
@@ -117,7 +118,7 @@ export default function Page() {
                     ))}
                 </div>
             </div>
-            <div className="overflow-hidden w-full opacity-5 absolute -top-1/2 -left-1/3">
+            <div className="overflow-visible w-full opacity-5 absolute -top-1/2 -left-1/3">
                 <div className="w-[700px] h-[700px] shadow-[4px_4px_4px_5px_#000000] rounded-full"></div>
             </div>
 
@@ -131,7 +132,7 @@ export default function Page() {
                     >
                         <motion.div
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-just-white w-full md:w-[900px] h-[85vh] md:h-[500px] overflow-hidden flex flex-col md:flex-row p-8"
+                            className="bg-just-white w-full md:max-w-[900px] h-[85vh] md:h-[500px] overflow-hidden flex flex-col md:flex-row p-8 md:p-0 rounded-2xl"
                             
                             // Menerapkan Varian Bersyarat
                             initial={isMobile ? "initial" : "initialDesktop"}
@@ -151,10 +152,7 @@ export default function Page() {
                             }}
                         >
                             {/* VIDEO WRAPPER */}
-                            <div
-                                onClick={toggleMute}
-                                className="relative w-full md:w-1/2 h-full rounded-2xl overflow-hidden"
-                            >
+                            <div onClick={toggleMute} className="relative w-full md:w-3/5 h-full rounded-2xl md:rounded-none overflow-hidden">
                                 <video
                                 ref={videoRef}
                                 src="/assets/reels/lihat-feed.mp4"
@@ -190,6 +188,14 @@ export default function Page() {
                                 <p className="text-blue-700">
                                 #DigitalMarketing #Adsvate #MarketingAgency
                                 </p>
+                                <div className="w-full mt-auto">
+                                    <div 
+                                        onClick={() => setOpenReels(false)} 
+                                        className="btn w-fit ml-auto bg-just-brightblue text-just-white text-base px-12 py-4 flex items-center justify-center gap-2"
+                                    >
+                                        <span>Tutup</span>
+                                    </div>
+                                </div>
                             </div>
                             
                             {/* MOBILE BUTTON (Hanya Muncul di Mobile) */}
@@ -215,8 +221,8 @@ export default function Page() {
 
 function HeroImageCountingTooltip({ className, iconPath, number, title, subtitle, decimalNumber }: { className: string, iconPath: string, number: number, title: string, subtitle: string, decimalNumber?: number | null }) {
     return (
-        <FlyingCloud className={cn("absolute bg-just-black/90 text-just-white p-2 px-3 rounded-lg", className, 'scale-60 md:scale-75 lg:scale-100')}>
-            <div className="flex gap-4 shrink-0">
+        <FlyingCloud className={cn("absolute", className, 'scale-60 md:scale-75 lg:scale-100')}>
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1, transition: { duration: .3 } }} className="flex gap-4 shrink-0 bg-just-black/90 text-just-white p-2 px-3 rounded-lg shadow-2xl">
                 <div className="relative w-full max-w-[46px] h-auto">
                     <MyIcon path={iconPath} width={46} height={46} />
                 </div>
@@ -225,14 +231,14 @@ function HeroImageCountingTooltip({ className, iconPath, number, title, subtitle
                         <AnimatedCounter finalNumber={number} />
                         {decimalNumber && (
                             <span>.
-                                <AnimatedCounter finalNumber={decimalNumber} />
+                                <AnimatedCounter finalNumber={decimalNumber} duration={3} />
                             </span>
                         )} 
                         {title}
                     </h3>
                     <h4 className="text-xs">{subtitle}</h4>
                 </div>
-            </div>
+            </motion.div>
         </FlyingCloud>
     );
 }
