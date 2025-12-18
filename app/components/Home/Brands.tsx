@@ -67,7 +67,7 @@ export default function Brands() {
                                 </motion.div>
                             ))}
                             {colIndex === brandCols.length - 1 && (
-                                <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ type: "spring", bounce: .3, duration: .3, delay: .3 }} className='btn bg-just-darkpurple text-just-white text-base'>
+                                <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ type: "spring", bounce: .3, duration: .8, delay: .3 }} className='btn bg-just-darkpurple text-just-white text-base'>
                                     Lihat Semua Kolaborasi
                                 </motion.div>
 

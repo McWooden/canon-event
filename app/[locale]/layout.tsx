@@ -5,6 +5,7 @@ import Navbar from "@/app/components/Navbar";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import Starfield from "@/app/components/Home/Starfield";
 
 type Props = {
   children: React.ReactNode;
@@ -42,6 +43,7 @@ export default async function RootLayout({children, params}: Props) {
   return (
     <html>
       <body className={`${montserrat.variable} ${poppins.variable} ${poppins.className} antialiased`}>
+        {/* <Starfield /> Bahaya ini ngelag! */}
         <NextIntlClientProvider>
           <Navbar />
           {children}

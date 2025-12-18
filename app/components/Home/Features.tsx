@@ -1,21 +1,34 @@
+'use client'
+
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 interface IFeatureCard {
   image: string
   title: string
   detail?: string
   tags?: string[]
+  index?: number
 }
 
-export function FeatureCard({ image, title, detail, tags }: IFeatureCard) {
+export function FeatureCard({ image, title, detail, tags, index = 0 }: IFeatureCard) {
 
   return (
-    <div 
-      className="flex-1 flex flex-col gap-2 bg-white p-4 text-[10px] rounded-btn transition-all duration-300 ease-in-out overflow-hidden"
+    <motion.div 
+      className="flex-1 flex flex-col gap-2 bg-white p-4 text-[10px] rounded-btn overflow-hidden"
+      initial={{ opacity: 0, rotate: -2, y: 30 }}
+      whileInView={{ opacity: 1, rotate: 0, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.15, ease: "easeOut" }}
+      whileHover={{ scale: 1.02, rotate: 0 }}
     >
       
       {/* image */}
-      <div className="flex items-center justify-center p-4 bg-just-white rounded-3xl">
+      <motion.div 
+        className="flex items-center justify-center p-4 bg-just-white rounded-3xl"
+        initial={{ scale: 0.9 }}
+        whileInView={{ scale: 1 }}
+        transition={{ duration: 0.3, delay: index * 0.15 + 0.1 }}
+      >
         <div className="w-30 h-30 relative">
           <Image
             src={`/features/${image}.svg`}
@@ -24,25 +37,41 @@ export function FeatureCard({ image, title, detail, tags }: IFeatureCard) {
             className="object-contain"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* title selalu kelihatan */}
-      <h3 className="font-bold text-xs">{title}</h3>
+      <motion.h3 
+        className="font-bold text-xs"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.15 + 0.2 }}
+      >
+        {title}
+      </motion.h3>
 
-      {/* detail + tags muncul dengan animasi smooth via state */}
-      <div 
-        className={`flex flex-col gap-1 transition-all duration-300 ease-in-out overflow-hidden`}
+      {/* detail + tags muncul dengan animasi smooth */}
+      <motion.div 
+        className="flex flex-col gap-1"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.15 + 0.3 }}
       >
         <p className="text-[10px] leading-relaxed">{detail}</p>
         <div className="flex flex-wrap gap-1">
           {tags?.map((tag, i) => (
-            <span key={i} className="text-just-orange text-[10px] px-1 py-0.5 rounded-sm bg-just-orange/10">
+            <motion.span 
+              key={i} 
+              className="text-just-orange text-[10px] px-1 py-0.5 rounded-sm bg-just-orange/10"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2, delay: index * 0.15 + 0.4 + i * 0.05 }}
+            >
               #{tag}
-            </span>
+            </motion.span>
           ))}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -94,14 +123,14 @@ export default function Features() {
             </div>
             <div className="flex flex-col md:flex-row gap-4 ">
                 {features.map((item, i) => (
-                <FeatureCard key={i} {...item} />
+                <FeatureCard key={i} {...item} index={i} />
                 ))}
             </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-end gap-4 text-end md:items-center px-4">
             <p className="italic text-xs">Dari Iklanin produkmu<br/>sampai bikin situs web!</p>
-            <div className="btn bg-just-darkpurple text-just-white ml-auto md:ml-0">Cek Harga Sekarang!</div>
+            <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ type: "spring", bounce: .3, duration: .3, delay: .3 }} className="btn bg-just-darkpurple text-just-white ml-auto md:ml-0">Cek Harga Sekarang!</motion.div>
         </div>
     </section>
   )

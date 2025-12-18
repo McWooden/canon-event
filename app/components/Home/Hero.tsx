@@ -227,7 +227,7 @@ export default function Page() {
 function HeroImageCountingTooltip({ className, iconPath, number, title, subtitle, decimalNumber }: { className: string, iconPath: string, number: number, title: string, subtitle: string, decimalNumber?: number | null }) {
     return (
         <FlyingCloud className={cn("absolute", className, 'scale-60 md:scale-75 lg:scale-100')}>
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1, transition: { duration: .3 } }} className="flex gap-4 shrink-0 bg-just-black/90 text-just-white p-2 px-3 rounded-lg shadow-2xl">
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1, transition: { duration: .3 } }} className="flex gap-4 shrink-0 bg-just-black/90 text-just-white p-2 px-3 rounded-2xl shadow-2xl">
                 <div className="relative w-full max-w-[46px] h-auto">
                     <MyIcon path={iconPath} width={46} height={46} />
                 </div>
