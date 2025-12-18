@@ -9,9 +9,12 @@ import MyIcon from "@/app/components/utils/MyIcon";
 import AnimatedCounter from "@/app/components/motion/AnimatedCounter";
 import cn from "@/app/utils/cn";
 import FlyingCloud from "@/app/components/motion/FlyingCloud";
+import {useTranslations} from 'next-intl';
 
 export default function Page() {
     const [openReels, setOpenReels] = useState(false)
+    const t = useTranslations('Home.hero');
+
 
     const videoRef = useRef<HTMLVideoElement | null>(null)
     const [muted, setMuted] = useState(false)
@@ -77,21 +80,21 @@ export default function Page() {
                 {/* TEXT */}
                 <div className="relative flex flex-col gap-5 max-w-xl">
                     <h2 className="text-sm md:text-lg font-semibold text-just-darkpurple">
-                        — Setiap ide punya potensi besar
+                        — {t('subtitle')}
                     </h2>
 
-                    <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
-                        Kami Wujudkan Ide Kamu
+                    <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                        {t('title')}
                     </h1>
 
                     <p className="text-sm md:text-base lg:text-xl">
-                        Dari strategi iklan, desain visual, sampai social media management — kami bantu brand kamu tumbuh cepat di dunia digital
+                        {t('description')}
                     </p>
 
-                    <div onClick={() => setOpenReels(true)} className="btn w-full md:w-fit bg-just-brightblue text-just-white text-base md:text-base px-6 py-4 flex items-center gap-2">
+                    <motion.div initial={{ scale: 0 }} whileInView={{ scale: 1 }} transition={{ type: "spring", bounce: .4, duration: .8 }} onClick={() => setOpenReels(true)} className="btn w-full md:w-fit bg-just-brightblue text-just-white text-base md:text-base px-6 py-4 flex items-center gap-2">
                         <MyIcon path="/icons/play_arrow_filled.svg" />
-                        <span>Lihat Feed Minsvate</span>
-                    </div>
+                        <span>{t('button')}</span>
+                    </motion.div>
 
                     <div className="hidden md:flex gap-2.5 absolute -bottom-1/5 md:-bottom-1/4 left-0">
                         <div className="bg-just-orange w-[25px] h-[25px] rounded-full shadow"></div>
@@ -101,13 +104,15 @@ export default function Page() {
 
                 {/* IMAGE */}
                 <div className="relative w-full max-w-[420px] md:max-w-[480px]">
-                    <Image
-                        src="/assets/hero.webp"
-                        alt="gambar"
-                        width={480}
-                        height={430}
-                        className="w-full h-auto object-contain"
-                    />
+                    <motion.div initial={{ filter: 'blur(20px)', opacity: 0 }} whileInView={{ filter: 'blur(0px)', opacity: 1 }}>
+                        <Image
+                            src="/assets/hero.webp"
+                            alt="gambar"
+                            width={480}
+                            height={430}
+                            className="w-full h-auto object-contain"
+                        />
+                    </motion.div>
 
                     {heroImageAttributes.map((attr, index) => (
                         <HeroImageCountingTooltip
@@ -118,7 +123,7 @@ export default function Page() {
                     ))}
                 </div>
             </div>
-            <div className="overflow-visible w-full opacity-5 absolute -top-1/2 -left-1/3">
+            <div className="hidden md:flex overflow-visible w-full opacity-5 absolute -top-1/2 -left-1/3">
                 <div className="w-[700px] h-[700px] shadow-[4px_4px_4px_5px_#000000] rounded-full"></div>
             </div>
 
